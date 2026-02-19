@@ -1,5 +1,7 @@
 namespace Catnip.Core.Data;
 
+using Catnip.Core.Control;
+
 public interface Traversable<M> : Functor<M>, Foldable<M>
 {
     // traverse :: Applicative f => (a -> f b) -> t a -> f (t b) 

@@ -1,6 +1,7 @@
-namespace Catnip.Core.Data;
+namespace Catnip.Core.Control;
 
 using Catnip.Core;
+using Catnip.Core.Data;
 
 /// <summary>
 /// Applicative functors are a generalization of function application
@@ -8,9 +9,9 @@ using Catnip.Core;
 /// <typeparam name="M"></typeparam>
 public interface Applicative<M> : Functor<M>
 {
-    // pure: a -> m a
+    // pure : a -> m a
     HKT<M, A> Pure<A>(A a);
 
-    // ap: m (a -> b) -> m a -> m b
+    // ap : m (a -> b) -> m a -> m b
     HKT<M, B> Ap<A, B>(HKT<M, Func<A, B>> mf, HKT<M, A> ma);
 }

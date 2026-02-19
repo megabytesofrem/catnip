@@ -1,5 +1,7 @@
 namespace Catnip.Core.Data;
 
+using Catnip.Core.Control;
+
 public sealed class EitherW<L> { }
 
 /// <summary>
@@ -118,4 +120,29 @@ public static class Either
 {
     public static Either<L, R> Left<L, R>(L value) => new Either<L, R>.Left(value);
     public static Either<L, R> Right<L, R>(R value) => new Either<L, R>.Right(value);
+}
+
+// ...existing code...
+
+public static class EitherExt
+{
+    public static Either<L, B> FMap<L, A, B>(this Either<L, A> ma, Func<A, B> f) =>
+        (Either<L, B>)EitherK<L>.Instance.FMap(f, ma);
+
+    public static Either<L, B> Ap<L, A, B>(this Either<L, Func<A, B>> mf, Either<L, A> ma) =>
+        (Either<L, B>)EitherK<L>.Instance.Ap(mf, ma);
+
+    public static Either<L, B> Bind<L, A, B>(this Either<L, A> ma, Func<A, Either<L, B>> f) =>
+        (Either<L, B>)EitherK<L>.Instance.Bind(ma, f);
+
+    #region LINQ
+    public static Either<L, B> Select<L, A, B>(this Either<L, A> ma, Func<A, B> f) =>
+        ma.FMap(f);
+
+    public static Either<L, B> SelectMany<L, A, B>(this Either<L, A> ma, Func<A, Either<L, B>> f) =>
+        ma.Bind(f);
+
+    public static Either<L, C> SelectMany<L, A, B, C>(this Either<L, A> ma, Func<A, Either<L, B>> f, Func<A, B, C> g) =>
+        ma.Bind(a => f(a).FMap(b => g(a, b)));
+    #endregion
 }

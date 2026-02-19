@@ -1,5 +1,7 @@
 namespace Catnip.Core.Data;
 
+using Catnip.Core.Control;
+
 public sealed class MaybeW { }
 
 /// <summary>
@@ -103,4 +105,21 @@ public sealed class Maybe
         };
     }
     #endregion
+}
+
+public static class MaybeExt
+{
+    private static readonly Maybe _m = new Maybe();
+
+    public static Maybe<B> FMap<A, B>(this Maybe<A> ma, Func<A, B> f) => (Maybe<B>)_m.FMap(f, ma);
+    public static Maybe<B> Ap<A, B>(this Maybe<Func<A, B>> mf, Maybe<A> ma) => (Maybe<B>)_m.Ap(mf, ma);
+    public static Maybe<B> Bind<A, B>(this Maybe<A> ma, Func<A, Maybe<B>> f) => (Maybe<B>)_m.Bind(ma, f);
+
+    #region LINQ
+    public static Maybe<B> Select<A, B>(this Maybe<A> ma, Func<A, B> f) => ma.FMap(f);
+    public static Maybe<B> SelectMany<A, B>(this Maybe<A> ma, Func<A, Maybe<B>> f) => ma.Bind(f);
+    public static Maybe<C> SelectMany<A, B, C>(this Maybe<A> ma, Func<A, Maybe<B>> f, Func<A, B, C> g) =>
+            ma.Bind(a => f(a).FMap(b => g(a, b)));
+    #endregion
+
 }

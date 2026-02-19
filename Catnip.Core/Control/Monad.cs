@@ -1,4 +1,4 @@
-namespace Catnip.Core.Data;
+namespace Catnip.Core.Control;
 
 using Catnip.Core;
 using Catnip.Core.Data;
@@ -10,6 +10,6 @@ using Catnip.Core.Data;
 /// <typeparam name="M"></typeparam>
 public interface Monad<M> : Applicative<M>
 {
-    // bind: m a -> (a -> m b) -> m b
+    // bind : m a -> (a -> m b) -> m b
     HKT<M, B> Bind<A, B>(HKT<M, A> ma, Func<A, HKT<M, B>> f);
 }
