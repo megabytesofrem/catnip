@@ -1,5 +1,6 @@
 namespace Catnip.Core.Control;
 
+// Witness type for IO monad
 public sealed class IOW { }
 
 // IO is a computation that performs side effects when ran

@@ -2,6 +2,7 @@ namespace Catnip.Core.Data;
 
 using Catnip.Core.Control;
 
+// Witness type for Either<L, R>, partially applied
 public sealed class EitherW<L> { }
 
 /// <summary>
