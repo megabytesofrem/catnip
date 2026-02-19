@@ -3,22 +3,15 @@ using Catnip.Core.Data;
 
 class MainClass
 {
-    static void Main()
-    {
-        Maybe<int> just = Maybe.Just(42);
-        var result = just.FMap(x => x * 2); // Just(84)
+    static readonly Func<string> buildString = () => "Hello world";
 
-        IO<string> main = from _0 in ConsoleIO.WriteLine("What is your name?")
-                          from name in ConsoleIO.ReadLine()
-                          from _1 in ConsoleIO.WriteLine($"Hello, {name}!")
-                          from _2 in IO<string>.Pure(result switch
-                          {
-                              Maybe<int>.Nothing => "Nothing",
-                              Maybe<int>.Just v => $"We have a value: {v.Value}!",
-                              _ => "Invalid Maybe value"
-                          })
-                          from _3 in ConsoleIO.WriteLine(_2)
-                          select "Done!";
-        main.Run();
-    }
+    static readonly IO<string> main = from _greet in IO<string>.Pure(buildString())
+                                      from _ in ConsoleIO.WriteLine(_greet)
+                                      from _prompt in ConsoleIO.WriteLine("What is your name?")
+                                      from name in ConsoleIO.ReadLine()
+                                      from __ in ConsoleIO.WriteLine(name)
+                                      select "Done";
+
+    // Stupid ape-tier wrapper to call our IO monad
+    static void Main() => main.Run();
 }
