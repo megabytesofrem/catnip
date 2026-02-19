@@ -8,9 +8,9 @@ using Catnip.Core;
 /// <typeparam name="M"></typeparam>
 public interface Applicative<M> : Functor<M>
 {
-    // pure: A -> M A
+    // pure: a -> m a
     HKT<M, A> Pure<A>(A a);
 
-    // ap: M (A -> B) -> M A -> M B
+    // ap: m (a -> b) -> m a -> m b
     HKT<M, B> Ap<A, B>(HKT<M, Func<A, B>> mf, HKT<M, A> ma);
 }

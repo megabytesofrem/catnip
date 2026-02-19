@@ -8,6 +8,6 @@ using Catnip.Core;
 /// <typeparam name="M"></typeparam>
 public interface Functor<M>
 {
-    // fmap: (A -> B) -> M A -> M B
+    // fmap: (a -> b) -> f a -> f b
     HKT<M, B> FMap<A, B>(Func<A, B> f, HKT<M, A> ma);
 }

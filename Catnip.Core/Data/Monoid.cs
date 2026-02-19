@@ -9,6 +9,6 @@ using Catnip.Core.Data;
 /// <typeparam name="M"></typeparam>
 public interface Monoid<M> : Semigroup<M>
 {
-    // mempty : M
+    // mempty : m
     HKT<M, A> MEmpty<A>();
 }

@@ -9,6 +9,6 @@ using Catnip.Core;
 /// <typeparam name="M"></typeparam>
 public interface Semigroup<M>
 {
-    // sconcat : M -> M -> M
+    // sconcat : m -> m -> m
     HKT<M, A> SConcat<A>(HKT<M, A> x, HKT<M, A> y);
 }
