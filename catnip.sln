@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catnip.Core", "Catnip.Core\Catnip.Core.csproj", "{4D250CC0-1968-498B-A36B-8EFD4C37320A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catnip.Sandbox", "Catnip.Sandbox\Catnip.Sandbox.csproj", "{DC01D9B8-D0FD-4C38-820A-C2C6C9BD9D4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D250CC0-1968-498B-A36B-8EFD4C37320A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D250CC0-1968-498B-A36B-8EFD4C37320A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D250CC0-1968-498B-A36B-8EFD4C37320A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D250CC0-1968-498B-A36B-8EFD4C37320A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC01D9B8-D0FD-4C38-820A-C2C6C9BD9D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC01D9B8-D0FD-4C38-820A-C2C6C9BD9D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC01D9B8-D0FD-4C38-820A-C2C6C9BD9D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC01D9B8-D0FD-4C38-820A-C2C6C9BD9D4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
